@@ -17,6 +17,9 @@ const utcVersion = require('utc-version')
 
 console.log(utcVersion())
 //=> 18.1.22.1441
+
+console.log(utcVersion({ apple: true }))
+//=> 18.1.22i157
 ```
 
 Shell:
@@ -24,10 +27,15 @@ Shell:
 ```sh
 $ utc-version
 18.1.22.1441
+
+$ utc-version --apple
+18.1.22i157
 ```
 
 ## API
 
-### `utcVersion([date]) => string`
+### `utcVersion([date], [options]) => string`
 
 Return a version string based on the `Date`-object passed in. If no time is given, the current time is used.
+
+If `options.apple` is truthy, the version string will be compatible with Apples restrictions on `CFBundleVersion`. The format will be `year.month.day` followed by `i` and a number between 1 and 255 inclusively. The `i` number is increased rughly every 5 minutes and 39 seconds.

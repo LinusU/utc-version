@@ -1,0 +1,23 @@
+const assert = require('assert')
+const utcVersion = require('./')
+
+assert.strictEqual(utcVersion(new Date('2018-01-01T00:00:00Z'), { apple: true }), '18.1.1i1')
+assert.strictEqual(utcVersion(new Date('2018-01-01T00:05:38Z'), { apple: true }), '18.1.1i1')
+assert.strictEqual(utcVersion(new Date('2018-01-01T00:05:39Z'), { apple: true }), '18.1.1i2')
+assert.strictEqual(utcVersion(new Date('2018-01-01T00:11:17Z'), { apple: true }), '18.1.1i2')
+assert.strictEqual(utcVersion(new Date('2018-01-01T00:11:18Z'), { apple: true }), '18.1.1i3')
+assert.strictEqual(utcVersion(new Date('2018-01-01T23:59:59Z'), { apple: true }), '18.1.1i255')
+assert.strictEqual(utcVersion(new Date('2018-01-02T00:00:00Z'), { apple: true }), '18.1.2i1')
+assert.strictEqual(utcVersion(new Date('2018-01-02T23:59:59Z'), { apple: true }), '18.1.2i255')
+
+assert.strictEqual(utcVersion(new Date('2018-01-01T00:00:00Z')), '18.1.1.0')
+assert.strictEqual(utcVersion(new Date('2018-01-01T00:00:59Z')), '18.1.1.0')
+assert.strictEqual(utcVersion(new Date('2018-01-01T00:01:00Z')), '18.1.1.1')
+assert.strictEqual(utcVersion(new Date('2018-01-01T01:00:00Z')), '18.1.1.100')
+assert.strictEqual(utcVersion(new Date('2018-01-01T01:01:00Z')), '18.1.1.101')
+assert.strictEqual(utcVersion(new Date('2018-01-01T23:59:59Z')), '18.1.1.2359')
+assert.strictEqual(utcVersion(new Date('2018-01-02T00:00:00Z')), '18.1.2.0')
+assert.strictEqual(utcVersion(new Date('2018-01-02T23:59:59Z')), '18.1.2.2359')
+
+assert.ok(utcVersion().match(/^\d+\.\d+\.\d+\.\d+$/))
+assert.ok(utcVersion({ apple: true }).match(/^\d+\.\d+\.\d+i\d+$/))
