@@ -1,6 +1,15 @@
 const assert = require('assert')
 const utcVersion = require('./')
 
+assert.strictEqual(utcVersion(new Date('2018-01-01T00:00:00Z'), { short: true }), '18.1.1')
+assert.strictEqual(utcVersion(new Date('2018-01-01T00:05:38Z'), { short: true }), '18.1.1')
+assert.strictEqual(utcVersion(new Date('2018-01-01T00:05:39Z'), { short: true }), '18.1.1')
+assert.strictEqual(utcVersion(new Date('2018-01-01T00:11:17Z'), { short: true }), '18.1.1')
+assert.strictEqual(utcVersion(new Date('2018-01-01T00:11:18Z'), { short: true }), '18.1.1')
+assert.strictEqual(utcVersion(new Date('2018-01-01T23:59:59Z'), { short: true }), '18.1.1')
+assert.strictEqual(utcVersion(new Date('2018-01-02T00:00:00Z'), { short: true }), '18.1.2')
+assert.strictEqual(utcVersion(new Date('2018-01-02T23:59:59Z'), { short: true }), '18.1.2')
+
 assert.strictEqual(utcVersion(new Date('2018-01-01T00:00:00Z'), { apple: true }), '18.1.1i1')
 assert.strictEqual(utcVersion(new Date('2018-01-01T00:05:38Z'), { apple: true }), '18.1.1i1')
 assert.strictEqual(utcVersion(new Date('2018-01-01T00:05:39Z'), { apple: true }), '18.1.1i2')
