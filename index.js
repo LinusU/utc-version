@@ -1,5 +1,5 @@
 module.exports = function utcVersion (date = new Date(), options = {}) {
-  if (typeof date === 'object' && typeof date.getUTCFullYear === 'undefined') {
+  if (!(date instanceof Date)) {
     options = date
     date = new Date()
   }
