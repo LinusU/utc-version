@@ -4,6 +4,9 @@
   "license": "MIT",
   "repository": "LinusU/utc-version",
   "bin": "bin.js",
+  "engines": {
+    "node": ">=6"
+  },
   "scripts": {
     "test": "standard && node test"
   },
