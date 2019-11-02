@@ -11,6 +11,6 @@
     "test": "standard && node test"
   },
   "devDependencies": {
-    "standard": "^12.0.1"
+    "standard": "^14.3.1"
   }
 }
