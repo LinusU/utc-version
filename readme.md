@@ -1,6 +1,6 @@
 # UTC Version
 
-Return a version string based on the current time.
+Return a version string based on the current date and time. If you prefer automatically generating date-only versions based on your latest git tag, try [daily-version](https://github.com/fregante/daily-version).
 
 ## Installation
 
